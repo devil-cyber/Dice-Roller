@@ -13,40 +13,63 @@ class _HomePageState extends State<HomePage> {
   AssetImage four = AssetImage("images/four.png");
   AssetImage five = AssetImage("images/five.png");
   AssetImage six = AssetImage("images/six.png");
-  AssetImage diceImage;
+  AssetImage diceImage1, diceImage2;
   @override
   void initState() {
     super.initState();
     setState(() {
-      diceImage = one;
+      diceImage1 = one;
+      diceImage2 = one;
     });
   }
 
   void rollDice() {
-    int random = (1 + Random().nextInt(6));
-    AssetImage newImage;
-    switch (random) {
+    int random1 = (1 + Random().nextInt(6));
+    int random2 = (1 + Random().nextInt(6));
+    AssetImage newImage1, newImage2;
+    switch (random1) {
       case 1:
-        newImage = one;
+        newImage1 = one;
         break;
       case 2:
-        newImage = two;
+        newImage1 = two;
         break;
       case 3:
-        newImage = three;
+        newImage1 = three;
         break;
       case 4:
-        newImage = four;
+        newImage1 = four;
         break;
       case 5:
-        newImage = five;
+        newImage1 = five;
         break;
       case 6:
-        newImage = six;
+        newImage1 = six;
+        break;
+    }
+    switch (random2) {
+      case 1:
+        newImage2 = one;
+        break;
+      case 2:
+        newImage2 = two;
+        break;
+      case 3:
+        newImage2 = three;
+        break;
+      case 4:
+        newImage2 = four;
+        break;
+      case 5:
+        newImage2 = five;
+        break;
+      case 6:
+        newImage2 = six;
         break;
     }
     setState(() {
-      diceImage = newImage;
+      diceImage1 = newImage1;
+      diceImage2 = newImage2;
     });
   }
 
@@ -57,21 +80,34 @@ class _HomePageState extends State<HomePage> {
         title: Text('Dice Roller'),
       ),
       body: Container(
+          padding: EdgeInsets.only(bottom: 20.0),
           child: Center(
               child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Image(image: diceImage, width: 200.0, height: 200.0),
-          Container(
-              margin: EdgeInsets.only(top: 100),
-              child: RaisedButton(
-                color: Colors.yellow,
-                padding: EdgeInsets.fromLTRB(30.0, 15.0, 30.0, 15.0),
-                child: Text('Roll the dice!'),
-                onPressed: rollDice,
-              ))
-        ],
-      ))),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image(image: diceImage1, width: 200.0, height: 200.0),
+              Container(
+                margin: EdgeInsets.only(top: 20.0),
+                child: Image(image: diceImage2, width: 200.0, height: 200.0),
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 100),
+                  child: RaisedButton(
+                      color: Colors.yellow,
+                      padding: EdgeInsets.fromLTRB(30.0, 10.0, 30.0, 10.0),
+                      child: Text('Roll the dice!',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          )),
+                      onPressed: rollDice,
+                      splashColor: Colors.orange,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      )))
+            ],
+          ))),
     );
   }
 }
