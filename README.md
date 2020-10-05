@@ -1,6 +1,9 @@
-# dice_roller
+# Simple Dice Roller App
 
-A new Flutter project.
+### Configure dice images in asset and add the logic in stateful widget for the Dice Roller
+
+### This app look like :
+<img src='images\Screenshot_20201005_105015.jpg' width="200"/>
 
 ## Getting Started
 
